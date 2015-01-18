@@ -1,0 +1,34 @@
+//
+//  PrefixHeader.pch
+//  InhibitSnore
+//
+//  Created by FZY on 15/1/12.
+//  Copyright (c) 2015年 FZY. All rights reserved.
+//
+
+#ifndef InhibitSnore_PrefixHeader_pch
+#define InhibitSnore_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import "UIView+PSBTransitionAnimation.h"
+
+#import "NSObject+BraceletCategory.h"
+
+#import "BluetoothFramework.h"
+
+#import "synDataInfo.h"
+#import "ResolveDataInfo.h"
+#import "PersonalInfo.h"
+#import "DeviceInfo.h"
+
+#import "FMDatabase.h"
+#import "FMResultSet.h"
+
+#define SqlitePath [NSHomeDirectory() stringByAppendingPathComponent:@"/Documents/Bracelet.db"]
+
+
+#define SCREENWIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREENHEIGHT [UIScreen mainScreen].bounds.size.height
+
+#endif
