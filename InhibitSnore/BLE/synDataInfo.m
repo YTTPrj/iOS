@@ -16,5 +16,5 @@
 @synthesize minute;
 @synthesize flag;
 @synthesize actionIndex;
-
+//good
 @end

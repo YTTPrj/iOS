@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7CFF623F-A5BE-4BDD-9C95-DCCE2EA4B1A2</string>
+	<key>IDESourceControlProjectName</key>
+	<string>InhibitSnore</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C2D8B19C37FA897E6645CE01C4D8B778FD182B6D</key>
+		<string>https://github.com/YTTPrj/iOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>InhibitSnore/InhibitSnore.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C2D8B19C37FA897E6645CE01C4D8B778FD182B6D</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/YTTPrj/iOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C2D8B19C37FA897E6645CE01C4D8B778FD182B6D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C2D8B19C37FA897E6645CE01C4D8B778FD182B6D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>new</string>
+		</dict>
+	</array>
+</dict>
+</plist>
