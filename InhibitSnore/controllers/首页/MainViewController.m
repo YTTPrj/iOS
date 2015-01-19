@@ -23,6 +23,7 @@
     NSMutableArray * dateArray;
     MyCustomView * myView;
     ShareView * shareView;
+    BOOL bottomLeftButton;
 }
 
 @end
@@ -40,7 +41,20 @@
     [self notifacationManage];
     [self alterXIB];
     [self customTableView];
-//    [self createAnimationButton];
+    
+    UIPanGestureRecognizer * pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(enlargePage:)];
+//    swipe.direction = UISwipeGestureRecognizerDirectionLeft;
+////    UITapGestureRecognizer * tap = [[UITapGestureRecognizer  alloc] initWithTarget:self action:@selector(enlargePage)];
+////    [_swipeImageView addGestureRecognizer:tap];
+    [_swipeImageView addGestureRecognizer:pan];
+    
+}
+
+- (void)enlargePage:(UIPanGestureRecognizer *)pan
+{
+    if (pan.view.frame.origin.x>0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ENLARGEPAGE" object:nil];
+    }
 }
 
 - (void)notifacationManage
@@ -77,10 +91,10 @@
 
 - (IBAction)onClick:(UIButton *)sender {
     switch (sender.tag) {
-        case 0:
+        case 100:
             [[NSNotificationCenter defaultCenter]postNotificationName:@"SHOWLEFT" object:nil];
             break;
-        case 1:
+        case 101:
             myView = [[MyCustomView alloc] initWithFrame:[UIScreen mainScreen].bounds height:250 title:@"选择查询日期"];
             [self createDatePickerView];
             [myView addSubview:datePickerView];
@@ -88,7 +102,7 @@
             [myView.cancelButton addTarget:self action:@selector(cancelOnClick) forControlEvents:UIControlEventTouchUpInside];
             [self.view addSubview:myView];
             break;
-        case 2:
+        case 102:
             shareView = [[ShareView alloc] initWithFrame:[UIScreen mainScreen].bounds];
             [shareView.weiXinButton addTarget:self action:@selector(shareButtons:) forControlEvents:UIControlEventTouchUpInside];
             [shareView.weiXinFriendCirCleButton addTarget:self action:@selector(shareButtons:) forControlEvents:UIControlEventTouchUpInside];
@@ -96,15 +110,60 @@
             [shareView.xButton addTarget:self action:@selector(shareButtons:) forControlEvents:UIControlEventTouchUpInside];
             [self.view addSubview:shareView];
             break;
-        case 3:
-            
+        case 200:
+            [self BLPlusButton];
             break;
-        case 4:
-            
+        case 201:
+            [self BLDeviceButton];
+            break;
+        case 202:
+            [self BLConnectState];
             break;
         default:
             break;
     }
+}
+
+//左下角按钮
+- (void)BLPlusButton
+{
+    if (bottomLeftButton) {
+        [_plusButton setImage:[UIImage imageNamed:@"增加图标"] forState:UIControlStateNormal];
+        [UIView animateWithDuration:0.3 animations:^{
+            _deviceButton.center = _plusButton.center;
+            _connectStateButton.center = _plusButton.center;
+        }];
+        bottomLeftButton=NO;
+    } else {
+        [_plusButton setImage:[UIImage imageNamed:@"增加图标点击效果"] forState:UIControlStateNormal];
+        [UIView animateWithDuration:0.3 animations:^{
+            _deviceButton.center = CGPointMake(_plusButton.center.x+THREEBUTTONOFFSET*0.7071067812, _plusButton.center.y-THREEBUTTONOFFSET*0.7071067812);
+            _connectStateButton.center = CGPointMake(_plusButton.center.x+THREEBUTTONOFFSET*0.96592582628907,  _plusButton.center.y+THREEBUTTONOFFSET*0.25881904510252);
+        }];
+        bottomLeftButton=YES;
+    }
+}
+
+- (void)BLDeviceButton
+{
+    [_plusButton setImage:[UIImage imageNamed:@"增加图标"] forState:UIControlStateNormal];
+    [UIView animateWithDuration:0.3 animations:^{
+        _deviceButton.center = _plusButton.center;
+        _connectStateButton.center = _plusButton.center;
+    }];
+    bottomLeftButton=NO;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"GOTOMONITOR" object:nil];
+}
+
+- (void)BLConnectState
+{
+    [_plusButton setImage:[UIImage imageNamed:@"增加图标"] forState:UIControlStateNormal];
+    [UIView animateWithDuration:0.3 animations:^{
+        _deviceButton.center = _plusButton.center;
+        _connectStateButton.center = _plusButton.center;
+    }];
+    bottomLeftButton=NO;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"GOTOCONNECT" object:nil];
 }
 
 //分享 微信 微信朋友圈 QQ好友
@@ -204,58 +263,10 @@
 }
 
 
-- (void)createAnimationButton
-{
-    UIImage *storyMenuItemImage = [UIImage imageNamed:@"实时监测"];
-    UIImage *storyMenuItemImagePressed = [UIImage imageNamed:@"实时监测点击效果"];
-    
-    UIImage *equipmentManagementImage = [UIImage imageNamed:@"设备管理"];
-    UIImage *equipmentManagementImagePressed = [UIImage imageNamed:@"设备管理点击效果"];
-    
-    // Camera MenuItem.
-    QuadCurveMenuItem *cameraMenuItem = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
-                                                                highlightedImage:storyMenuItemImagePressed
-                                                                    ContentImage:[UIImage imageNamed:@""]
-                                                         highlightedContentImage:nil];
-    // People MenuItem.
-    QuadCurveMenuItem *peopleMenuItem = [[QuadCurveMenuItem alloc] initWithImage:equipmentManagementImage
-                                                                highlightedImage:equipmentManagementImagePressed
-                                                                    ContentImage:[UIImage imageNamed:@""]
-                                                         highlightedContentImage:nil];
-    
-    NSArray *menus = [NSArray arrayWithObjects:cameraMenuItem, peopleMenuItem,nil];
-    QuadCurveMenu *menu = [[QuadCurveMenu alloc] initWithFrame:[UIScreen mainScreen].bounds menus:menus];
-    menu.delegate = self;
-    [self.view addSubview:menu];
-}
-
-- (void)quadCurveMenu:(QuadCurveMenu *)menu didSelectIndex:(NSInteger)idx
-{
-    NSLog(@"Select the index : %d",idx);
-}
-
-
 #pragma mark - 切换视图控制器
 - (void)cutViewController:(NSInteger)number
 {
-//    switch (number) {
-//        case 0:
-//            break;
-//        case 1:
-//            [self.navigationController pushViewController:[[MonitorViewController alloc] init] animated:NO];
-//            break;
-//        case 2:
-//            [self.navigationController pushViewController:[[ManageViewController alloc] init] animated:NO];
-//            break;
-//        case 3:
-//            [self.navigationController pushViewController:[[SysSettingViewController alloc] init] animated:NO];
-//            break;
-//        case 4:
-//            [self.navigationController pushViewController:[[AboutViewController alloc] init] animated:NO];
-//            break;
-//        default:
-//            break;
-//    }
+
 }
 
 - (void)cutViewController1{
@@ -282,7 +293,7 @@
     _detailTableView.delegate = self;
     _detailTableView.dataSource = self;
     _detailTableView.bounces = NO;
-    detailMemberArray = @[@"睡觉/起床",@"床上时间",@"打鼾次数",@"睡眠指数"];
+    detailMemberArray = @[@"睡觉时间",@"打鼾次数",@"止鼾成功",@"止鼾失效"];
     
 }
 
@@ -318,6 +329,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 
 

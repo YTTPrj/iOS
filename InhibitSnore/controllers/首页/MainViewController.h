@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "HeadViewController.h"
-#import "QuadCurveMenu.h"
 
-@interface MainViewController : UIViewController<HeadViewControllerDelegate,QuadCurveMenuDelegate,UITableViewDataSource,UITableViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
+@interface MainViewController : UIViewController<HeadViewControllerDelegate,UITableViewDataSource,UITableViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *menuButton;
 @property (weak, nonatomic) IBOutlet UIButton *dateButton;
@@ -22,5 +21,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *lastButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 @property (weak, nonatomic) IBOutlet UIButton *reloadButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *plusButton;
+@property (weak, nonatomic) IBOutlet UIButton *deviceButton;
+@property (weak, nonatomic) IBOutlet UIButton *connectStateButton;
+
+@property (weak, nonatomic) IBOutlet UIImageView *swipeImageView;
+
 
 @end

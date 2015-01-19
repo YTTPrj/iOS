@@ -13,7 +13,7 @@
 #import "MainViewController.h"
 #import "HeadViewController.h"
 #import "NMainViewController.h"
-//#import "MainViewController.h"
+#import "MainViewController.h"
 #import "MyCustomView.h"
 
 @interface PersonalViewController (){
@@ -433,9 +433,9 @@
     
     HeadViewController * hvc = [[HeadViewController alloc] init];
     NMainViewController *nmvc = [[NMainViewController alloc] init];
-//    MainViewController * mvc = [[MainViewController alloc] init];
+    MainViewController * mvc = [[MainViewController alloc] init];
 //    UINavigationController * nvc = [[UINavigationController alloc] initWithRootViewController:nmvc];
-    WWSideslipViewController * wwvc = [[WWSideslipViewController alloc]initWithLeftView:hvc andMainView:nmvc];
+    WWSideslipViewController * wwvc = [[WWSideslipViewController alloc]initWithLeftView:hvc andMainView:mvc];
     [wwvc setSpeedf:0.5];
     wwvc.sideslipTapGes.enabled = YES;
     

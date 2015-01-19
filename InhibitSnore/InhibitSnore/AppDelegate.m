@@ -11,7 +11,15 @@
 #import "WWSideslipViewController.h"
 #import "HeadViewController.h"
 #import "NMainViewController.h"
-//#import "MainViewController.h"
+#import "MainViewController.h"
+
+//ShareSDK
+#import <ShareSDK/ShareSDK.h>
+#import "WXApi.h"
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <QQConnection/QQConnection.h>
+
 
 @interface AppDelegate (){
     BOOL isFirst;
@@ -35,7 +43,7 @@
     //个人注册信息表
     NSString *sql3=@"create table PersonalInfo(userName text,password text,nikeName text,image text,sex text,height text,weight text,heightUnit text,weightUnit text,birthday text,walk text,jogg text,calorie text,sleepTime text,sleeplong text,PerUUID text,DeviceUUID text)";
     
-    //设备信息
+    //设备信息4o
     NSString *sql4=@"create table DeviceInfo(userName text,UUID text,DeviceUUID text,DeviceName text)";
     [data executeUpdate:sql];
     [data executeUpdate:sql2];
@@ -45,7 +53,6 @@
     NSString *selectsql=@"where flag = -1 ";
     NSArray *arr=[self retunsynForDay:selectsql];
     if (arr.count<=0) {
-        
         NSString *year=[NSString stringWithFormat:@"%d",[self getnowYear]];
         NSString *month=[NSString stringWithFormat:@"%d",[self getnowMonth]];
         NSString *day=[NSString stringWithFormat:@"%d",[self getnowDay]];
@@ -69,9 +76,9 @@
         [[NSUserDefaults standardUserDefaults] setBool:isFirst forKey:@"ISFIRSTSTART"];
     } else {
         HeadViewController * hvc = [[HeadViewController alloc] init];
-        NMainViewController *nmvc = [[NMainViewController alloc] init];
+//        NMainViewController *nmvc = [[NMainViewController alloc] init];
         //    UINavigationController * nvc = [[UINavigationController alloc] initWithRootViewController:nmvc];
-//        MainViewController * mvc = [[MainViewController alloc] init];
+        MainViewController * mvc = [[MainViewController alloc] init];
         WWSideslipViewController * wwvc = [[WWSideslipViewController alloc]initWithLeftView:hvc andMainView:mvc];
         [wwvc setSpeedf:0.5];
         wwvc.sideslipTapGes.enabled = YES;

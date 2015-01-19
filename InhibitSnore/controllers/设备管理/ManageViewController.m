@@ -37,18 +37,18 @@
 - (IBAction)nextPage:(UIButton *)sender {
     //是否绑定  判断在这里
     //已绑定的
-    UIAlertView * alt = [[UIAlertView alloc] initWithTitle:@"解除绑定" message:@"如果你想重新连接到另一个设备，你首先需要解除当前设备的绑定" delegate:self cancelButtonTitle:@"不解除" otherButtonTitles:@"解除", nil];
-    
-    alt.alertViewStyle = UIAlertViewStylePlainTextInput;
-    _tf = [alt textFieldAtIndex:0];
-    _tf.delegate = self;
-    _tf.textAlignment = NSTextAlignmentCenter;
-    _tf.placeholder = @"您可以在此给设备重新命名";
-    [alt show];
+//    UIAlertView * alt = [[UIAlertView alloc] initWithTitle:@"解除绑定" message:@"如果你想重新连接到另一个设备，你首先需要解除当前设备的绑定" delegate:self cancelButtonTitle:@"不解除" otherButtonTitles:@"解除", nil];
+//    
+//    alt.alertViewStyle = UIAlertViewStylePlainTextInput;
+//    _tf = [alt textFieldAtIndex:0];
+//    _tf.delegate = self;
+//    _tf.textAlignment = NSTextAlignmentCenter;
+//    _tf.placeholder = @"您可以在此给设备重新命名";
+//    [alt show];
     
     
     //为绑定跳入搜索 FirstSearchViewController界面
-//    [self.navigationController pushViewController:[[FirstSearchViewController alloc]init] animated:YES];
+    [self.navigationController pushViewController:[[FirstSearchViewController alloc]init] animated:YES];
 }
 
 #pragma mark - textField代理
