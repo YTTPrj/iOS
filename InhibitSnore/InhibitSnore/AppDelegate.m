@@ -64,12 +64,24 @@
     
 }
 
+- (void)createShareSDK
+{
+    [ShareSDK registerApp:@"55a8600e9d70"];
+    //QQ
+    [ShareSDK connectQQWithQZoneAppKey:@"100371282"
+                     qqApiInterfaceCls:[QQApiInterface class]
+                       tencentOAuthCls:[TencentOAuth class]];
+    [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885"
+                           wechatCls:[WXApi class]];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
 //    NSString * str = [NSString stringWithFormat:@"%d",[self getnowYear]];
 //    int year = [[str substringWithRange:NSMakeRange(2, 2)] intValue];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [self createShareSDK];
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"ISFIRSTSTART"]) {
         self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[ViewController alloc]init]];
         isFirst = YES;

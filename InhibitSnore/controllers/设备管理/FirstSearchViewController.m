@@ -43,6 +43,7 @@
 
 - (void)startAnimation
 {
+    [[BluetoothFramework Singleton]scanForPer];
     CGAffineTransform endAngle = CGAffineTransformMakeRotation(-angle * (M_PI / 180.0f));
     [UIView animateWithDuration:0.01 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
         _circleImageView.transform = endAngle;
@@ -60,6 +61,7 @@
 //        [self presentViewController:<#(UIViewController *)#> animated:<#(BOOL)#> completion:<#^(void)completion#>];
 //    }
     [self.navigationController pushViewController:[[SearchFailedViewController alloc] init] animated:YES];
+    [[BluetoothFramework Singleton]stopScanForPer];
 }
 
 //- (void)viewDidDisappear:(BOOL)animated

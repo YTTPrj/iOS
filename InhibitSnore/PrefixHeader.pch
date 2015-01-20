@@ -22,6 +22,14 @@
 #import "PersonalInfo.h"
 #import "DeviceInfo.h"
 
+//分享
+#import <ShareSDK/ShareSDK.h>
+#import "WXApi.h"
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <QQConnection/QQConnection.h>
+
+
 #import "FMDatabase.h"
 #import "FMResultSet.h"
 
@@ -31,5 +39,14 @@
 #define THREEBUTTONOFFSET 35
 #define SCREENWIDTH [UIScreen mainScreen].bounds.size.width
 #define SCREENHEIGHT [UIScreen mainScreen].bounds.size.height
+
+#define BINGDINGSTATEREAD [[NSUserDefaults standardUserDefaults] objectForKey:@"BINGDINGSTATE"];
+#define BINGDINGSTATEWRITE(obj) [[NSUserDefaults standardUserDefaults] setObject:obj forKey:@"BINGDINGSTATE"];
+
+
+
+
+
+
 
 #endif

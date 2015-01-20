@@ -40,6 +40,8 @@
 
 @property(nonatomic,retain)NSString *strUUID;
 
+@property BOOL connectState;
+
 -(void)readSystemUUID;
 -(void)stopReadSystemUUID;
 -(void)writeValueForFFF3:(NSMutableData *)writevalue;
@@ -64,7 +66,7 @@
 
 
 //获取deviceid
--(void)didConnectPeripheral:(NSDictionary *)perInfo   values:(NSData *) datavalue;
+-(void)didConnectPeripheral:(NSDictionary *)perInfo values:(NSData *) datavalue;
 //发现设备
 -(void)didDiscoverPeripheral:(NSDictionary *)perInfo;
 

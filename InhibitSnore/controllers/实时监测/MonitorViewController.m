@@ -8,7 +8,9 @@
 
 #import "MonitorViewController.h"
 
-@interface MonitorViewController ()
+@interface MonitorViewController (){
+    NSTimer * timer;
+}
 
 @end
 
@@ -26,7 +28,9 @@
 
 
 
-
+- (void)createStopwatch{
+    timer = [[NSTimer alloc] init];
+}
 
 - (IBAction)lastPage:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:YES];
